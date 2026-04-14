@@ -11,7 +11,7 @@ Analyzed Lil Uzi Vert's song catalog and completed:
 
 ## Resources ##
 
-- Claude Code for syntax issues and data transformation ideas
+- Claude Code for webscrapping help, syntax issues and data transformation ideas
 
 - https://xgboosting.com/feature-engineering-for-xgboost/
 
