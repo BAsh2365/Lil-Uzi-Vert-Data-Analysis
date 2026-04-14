@@ -1,24 +1,14 @@
-# ============================================================
-# Lil Uzi Vert - Spotify Streaming EDA
-# ============================================================
-# Requirements: install.packages(c("tidyverse", "scales", "corrplot"))
-
 library(tidyverse)
 library(scales)
 library(corrplot)
 
-# ── 1. LOAD & CLEAN ─────────────────────────────────────────
-
-# Update this path to wherever your CSV lives
 df <- read_csv("uzi_songs.csv")
 
-# The asterisk (*) prefix on song_title marks feature tracks
-# Pull that into its own boolean column, then strip it from the title
 df <- df %>%
   mutate(
     is_feature = str_starts(song_title, "\\*"),
     song_title = str_remove(song_title, "^\\*"),
-    # Shorten long titles for plotting (cap at 35 chars)
+   
     short_title = ifelse(
       nchar(song_title) > 35,
       paste0(str_sub(song_title, 1, 32), "..."),
@@ -31,8 +21,6 @@ df <- df %>%
 
 cat("Dataset dimensions:", nrow(df), "songs x", ncol(df), "columns\n\n")
 
-
-# ── 2. SUMMARY STATISTICS ───────────────────────────────────
 
 # Helper: statistical mode (most frequent value)
 stat_mode <- function(x) {
@@ -81,8 +69,6 @@ df %>%
 cat("\n")
 
 
-# ── 3. PLOT: TOP 15 SONGS BY TOTAL STREAMS ──────────────────
-
 top15 <- df %>%
   slice_max(Streams, n = 15)
 
@@ -121,7 +107,6 @@ ggsave("plot_top15_total_streams.png", p1, width = 10, height = 7, dpi = 150)
 cat("Saved: plot_top15_total_streams.png\n")
 
 
-# ── 4. PLOT: TOP 10 SONGS BY DAILY STREAMS ──────────────────
 
 top10_daily <- df %>%
   slice_max(Daily, n = 10)
@@ -161,7 +146,6 @@ ggsave("plot_top10_daily_streams.png", p2, width = 10, height = 6, dpi = 150)
 cat("Saved: plot_top10_daily_streams.png\n")
 
 
-# ── 5. SCATTERPLOT: TOTAL vs DAILY STREAMS ──────────────────
 
 p3 <- ggplot(df, aes(x = streams_m, y = daily_k)) +
   geom_point(
@@ -206,7 +190,7 @@ ggsave("plot_scatter_total_vs_daily.png", p3, width = 10, height = 7, dpi = 150)
 cat("Saved: plot_scatter_total_vs_daily.png\n")
 
 
-# ── 6. CORRELATION ANALYSIS ─────────────────────────────────
+
 
 # Pearson correlation between Streams and Daily
 r_pearson  <- cor(df$Streams, df$Daily, method = "pearson")
