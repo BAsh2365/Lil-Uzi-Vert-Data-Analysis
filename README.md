@@ -11,7 +11,7 @@ Analyzed Lil Uzi Vert's song catalog and completed:
 
 ## Resources ##
 
-- Claude Code for webscrapping help, syntax issues, data transformation ideas, and slideshow
+- Claude Code for webscrapping help, syntax issues, data transformation ideas
 
 - https://xgboosting.com/feature-engineering-for-xgboost/
 
@@ -21,4 +21,3 @@ Analyzed Lil Uzi Vert's song catalog and completed:
 
 <img width="1728" height="2304" alt="Re-release scores Xo Tour Lif3 (99_) 20 Min (99_) The Way Life goes (99_)" src="https://github.com/user-attachments/assets/8252d3dc-78a7-4998-8b37-a9b90f90eac9" />
 
-[Lil_Uzi_Data_Analysis.pdf](https://github.com/user-attachments/files/26877310/Lil_Uzi_Data_Analysis.pdf)
